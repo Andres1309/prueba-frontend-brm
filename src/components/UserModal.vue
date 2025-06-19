@@ -3,6 +3,7 @@
     :model-value="modelValue" 
     @update:model-value="$emit('update:modelValue', $event)"
     max-width="500"
+    transition="dialog-bottom-transition"
   >
     <v-card v-if="user">
       <v-card-title>{{ user.name || 'Nombre no disponible' }}</v-card-title>

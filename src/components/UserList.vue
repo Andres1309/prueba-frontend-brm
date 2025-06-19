@@ -2,9 +2,9 @@
   <v-container>
     <SearchBar v-model="searchQuery" @search="handleSearch" />
 
-    <v-row v-if="loading">
-      <v-col cols="12" class="text-center">
-        <v-progress-circular indeterminate color="primary" />
+    <v-row v-if="loading" justify="center">
+      <v-col cols="auto">
+        <v-progress-circular indeterminate color="primary" size="64"  />
       </v-col>
     </v-row>
 
@@ -28,7 +28,7 @@
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>
-              <v-btn class="custom-action-btn" color="hsla(160, 100%, 37%, 1)" size="small" @click="openModal(user)" >
+              <v-btn class="custom-action-btn" color="hsla(160, 100%, 37%, 1)" size="small" @click="openModal(user)">
                 Ver más
               </v-btn>
             </td>
@@ -61,7 +61,6 @@ onMounted(async () => {
   try {
     const data = await fetchUsers();
     users.value = Array.isArray(data) ? [...data] : [];
-    console.log('Users loaded:', users.value);
   } catch (error) {
     console.error('Error fetching users:', error);
     users.value = [];
@@ -91,7 +90,6 @@ const handleSearch = (query) => {
 .v-table {
   width: 100%;
 }
-
 </style>
 
 <style>
